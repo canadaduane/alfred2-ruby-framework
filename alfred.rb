@@ -8,7 +8,7 @@ class AlfredInit
   def initialize(query)
     @query = query
     if bundle_id
-      init_dir(temp_path)
+      init_dir(temp_storage_path)
       init_dir(storage_path)
     end
   end
