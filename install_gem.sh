@@ -12,14 +12,14 @@
 # them into the workflow bundle's gem directory. Assuming you are in the
 # workflow bundle directory that you want to install a gem to:
 
-if [[ `pwd` == *"Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows/user.workflow."* ]]; then
+if [[ `pwd` == *"Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows/"* ]]; then
 
   # Create a 'gems' folder in /tmp
   mkdir -p /tmp/gems
   mkdir ./ruby-1.8/
 
   # Use the native Mac OS X version of Ruby
-  /usr/bin/gem install $1 --install-dir /tmp/gems/
+  /usr/bin/gem install $1 --no-rdoc --no-ri --install-dir /tmp/gems/
 
   # Copy the directory structure over top of the ruby-1.8 directory structure
   cp -vR /tmp/gems/ ./ruby-1.8/
@@ -27,5 +27,5 @@ if [[ `pwd` == *"Library/Application Support/Alfred 2/Alfred.alfredpreferences/w
   # Clean up
   rm -rf /tmp/gems
 else
-  echo "Use this command from within the Alfred 2 workflows/user.workflow.* directory"
+  echo "Use this command from within the Alfred 2 workflows directory"
 fi
