@@ -1,6 +1,10 @@
 # Put this init script directly into the Alfred script window and
 # it will load main.rb with console logging enabled for Ruby exceptions
 
+# Add workflow directory to ruby path
+$: << File.join(File.dirname(__FILE__))
+
+# Add workflow gem repository to gem path
 ENV['GEM_PATH'] = File.join(Dir.pwd, 'ruby-1.8')
 
 # Provide a facility to log messages to Console.app:
