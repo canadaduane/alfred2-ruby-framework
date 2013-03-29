@@ -21,6 +21,18 @@ class AlfredInit
     @plist ||= Plist::parse_xml(plist_path)
   end
 
+  def settings_path
+    File.join(storage_path, 'settings.plist')
+  end
+
+  def settings
+    @settings ||= Plist::parse_xml(settings_path) || {}
+  end
+
+  def store_settings!
+    File.open(settings_path, 'w') { |f| f.puts settings.to_plist }
+  end
+
   # The plist bundleid as set by the workflow UI. Returns nil if not set.
   def bundle_id
     plist['bundleid'] if plist['bundleid'] != ''
